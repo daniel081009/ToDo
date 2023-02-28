@@ -126,7 +126,7 @@ func GetToDo() (map[string]Todo, error) {
 	}
 	defer db.Close()
 
-	var todo map[string]Todo = make(map[string]Todo, 0)
+	var todo map[string]Todo = map[string]Todo{}
 	err = db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte(TodoBucket))
 		b.ForEach(func(k, v []byte) error {

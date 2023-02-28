@@ -16,6 +16,11 @@ var rootCmd = &cobra.Command{
 			fmt.Println(err)
 			return
 		}
+		for key, value := range data {
+			if value.Clear {
+				delete(data, key)
+			}
+		}
 		db.Print(data)
 	},
 }
